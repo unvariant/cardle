@@ -20,13 +20,11 @@ function App() {
     function getRandomCardPath() {
         const suits = ["hearts", "clubs", "diamonds", "spades"];
         const values = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"];
-        const colors = ["white", "green", "yellow"];
         
         const randomValue = values[Math.floor(Math.random() * values.length)];
         const randomSuit = suits[Math.floor(Math.random() * suits.length)];
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
         
-        return `./src/assets/cards/${randomColor}/${randomValue}-of-${randomSuit}.png`;
+        return `./src/assets/cards/${randomValue}-of-${randomSuit}.png`;
     }
     
     switch (scene.get) {
@@ -106,7 +104,7 @@ function App() {
                     }}
                 >
                     <PlayingCard
-                        card="./src/assets/cards/white/ace-of-spades.png"
+                        card="./src/assets/cards/ace-of-spades.png"
                         style={{
                             transform: "scale(1.2)",
                         }}
