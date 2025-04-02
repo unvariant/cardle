@@ -66,43 +66,24 @@ function App() {
             const title = [];
             
             for (let i = 0; i < titleChars.length; i++) {
-                const cardStyle: React.CSSProperties = {
-                    position: "relative",
-                    zIndex: 20,
-                    transform: `rotate(${Math.floor(Math.random() * 20) - 10}deg)`,
-                    transition: "transform 0.3s ease",
-                };
+                const scale = 100 + Math.floor(Math.random() * 20);
+                const jitter = Math.floor(Math.random() * 20) - 10;
                 
                 const char = (
                     <div
-                        key={`title-card-${i}`}
+                        key={`title-char-${i}`}
                         style={{
+                            fontFamily: "balatro",
+                            fontSize: "35vh",
+                            transform: `scale(${scale}%) rotate(${jitter}deg)`,
+                            color: "white",
+                            textShadow: "0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5)",
+                            zIndex: 20,
                             position: "relative",
-                            animation: "card-pop 2s infinite",
-                            animationDelay: `${i * 0.2}s`,
                         }}
                         className="title"
                     >
-                        <PlayingCard
-                            card={`./src/assets/backs/back-${i % 5}-${i % 7}.png`}
-                            style={cardStyle}
-                            jitter={8}
-                            mouse={mouse.get}
-                        />
-                        <div
-                            style={{
-                                position: "absolute",
-                                top: "50%",
-                                left: "50%",
-                                transform: "translate(-50%, -50%)",
-                                fontFamily: "balatro",
-                                fontSize: "8vh",
-                                color: "white",
-                                textShadow: "2px 2px 4px #000000",
-                            }}
-                        >
-                            {titleChars[i]}
-                        </div>
+                        <span>{titleChars[i]}</span>
                     </div>
                 );
                 title.push(char);
