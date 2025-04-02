@@ -3,10 +3,9 @@ import PlayingCard from "./PlayingCard.tsx";
 
 const HIGHEST = 200;
 
-function numberToCard(card: number, border: boolean) {
+function numberToCard(card: number) {
     const suit = 1;
-    const borderPath = border ? "border" : "";
-    return `./src/assets/cards/white/${borderPath}/${IDS[card]}-of-${SUITS[suit]}.png`;
+    return `./src/assets/cards/${IDS[card]}-of-${SUITS[suit]}.png`;
 }
 
 function Selection({
@@ -52,7 +51,7 @@ function Selection({
             <div style={{
                 height: "100%",
             }}>
-                <PlayingCard card={numberToCard(card, current)} style={style} mouseOver={() => {
+                <PlayingCard card={numberToCard(card)} style={style} mouseOver={() => {
                     currentSelectionIndexSet(i);
                 }} click={select}></PlayingCard>
             </div>

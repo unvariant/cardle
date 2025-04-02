@@ -2,15 +2,13 @@ import PlayingCard from "./PlayingCard.tsx";
 import { Game, IDS, SUITS, State, Vec2, Var, wrap } from "./common.tsx";
 import { useRef, useState, useEffect } from "react";
 
-function numberToCard(card: number, color: string, border: boolean) {
+function numberToCard(card: number) {
     const suit = 1;
-    const cardBorder = border ? "border" : "";
-    return `./src/assets/cards/${color}/${cardBorder}/${IDS[card]}-of-${SUITS[suit]}.png`;
+    return `./src/assets/cards/${IDS[card]}-of-${SUITS[suit]}.png`;
 }
 
-function numberToBack(back: string, border: boolean) {
-    const cardBorder = border ? "border" : "";
-    return `./src/assets/backs/${cardBorder}/${back}.png`;
+function numberToBack(back: string) {
+    return `./src/assets/backs/${back}.png`;
 }
 
 function Board({
@@ -81,10 +79,10 @@ function Board({
 
             switch (card.state) {
                 case State.Visible:
-                    image = numberToCard(n, card.color || "white", isTarget);
+                    image = numberToCard(n);
                     break;
                 case State.Hidden:
-                    image = numberToBack("back-2-3", isTarget);
+                    image = numberToBack("back-2-3");
                     break;
                 default:
                     break;
